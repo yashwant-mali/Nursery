@@ -14,18 +14,20 @@ import LogIn from './LogIn';
 const SignUp = () => {
     const [formData, setFormData] = useState({ nurseryName: '', name: '', mobileNo: '', email: '', password: '' });
 
-    // const [{ isLoading, isSuccess, isError, error }] = useSignUpUserMutation();
+    // const [signUpUser, { isLoading, isSuccess, isError, error }] = useSignUpUserMutation();
 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        // console.log("from handlechange"+formData)
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit =  async (e) => {
         e.preventDefault();
         try {
-            await signUpUser(formData).unwrap();
+            // await signUpUser(formData).unwrap();
+          console.log(formData.name,formData.email, formData.password, formData.nurseryName,formData.mobileNo)
             alert('Sign-up successful!');
         } catch (err) {
             console.error('Sign-up failed:', err);
@@ -37,7 +39,7 @@ const SignUp = () => {
         <Container maxWidth="sm">
             <Box
                 component="form"
-                // onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
                 sx={{
                     mt: 4,
                     p: 4,
@@ -64,8 +66,8 @@ const SignUp = () => {
                 <TextField
                     label="Nursery Name"
                     name="nurseryName"
-                    // value={formData.password}
-                    // onChange={handleChange}
+                    value={formData.nurseryName}
+                    onChange={handleChange}
                     fullWidth
                     required
                     margin="normal"
@@ -73,8 +75,8 @@ const SignUp = () => {
                 <TextField
                     label="Owner Name"
                     name="name"
-                    // value={formData.name}
-                    // onChange={handleChange}
+                    value={formData.name}
+                    onChange={handleChange}
                     fullWidth
                     required
                     margin="normal"
@@ -82,8 +84,8 @@ const SignUp = () => {
                 <TextField
                     label="Email"
                     name="email"
-                    // value={formData.email}
-                    // onChange={handleChange}
+                    value={formData.email}
+                    onChange={handleChange}
                     type="email"
                     fullWidth
                     required
@@ -92,8 +94,8 @@ const SignUp = () => {
                 <TextField
                     label="Mobile Number"
                     name="mobileNo"
-                    // value={formData.email}
-                    // onChange={handleChange}
+                    value={formData.mobileNo}
+                    onChange={handleChange}
                     type="tel"
                     fullWidth
                     required
@@ -102,8 +104,8 @@ const SignUp = () => {
                 <TextField
                     label="Password"
                     name="password"
-                    // value={formData.password}
-                    // onChange={handleChange}
+                    value={formData.password}
+                    onChange={handleChange}
                     type="password"
                     fullWidth
                     required

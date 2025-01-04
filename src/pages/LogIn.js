@@ -11,34 +11,35 @@ import {
 } from '@mui/material';
 
 export default function LogIn() {
-    // const [formData, setFormData] = useState({
-    //     email: '',
-    //     password: '',
-    // });
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
 
     // const [loginUser, { isLoading, isSuccess, isError, error }] = useLoginUserMutation();
 
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({ ...formData, [name]: value });
-    // };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const response = await loginUser(formData).unwrap();
-    //         alert(`Login successful! Welcome, ${response.name}`);
-    //         localStorage.setItem('authToken', response.token); // Save JWT token for authentication
-    //     } catch (err) {
-    //         console.error('Login failed:', err);
-    //     }
-    // };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // const response = await loginUser(formData).unwrap();
+            console.log(formData.email,formData.password);
+            alert(`Login successful! Welcome, ${response.name}`);
+            localStorage.setItem('authToken', response.token); // Save JWT token for authentication
+        } catch (err) {
+            console.error('Login failed:', err);
+        }
+    };
 
     return (
         <Container maxWidth="sm">
             <Box
                 component="form"
-                // onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
                 sx={{
                     mt: 4,
                     p: 4,
@@ -67,8 +68,8 @@ export default function LogIn() {
                 <TextField
                     label="Email"
                     name="email"
-                    // value={formData.email}
-                    // onChange={handleChange}
+                    value={formData.email}
+                    onChange={handleChange}
                     type="email"
                     fullWidth
                     required
@@ -77,8 +78,8 @@ export default function LogIn() {
                 <TextField
                     label="Password"
                     name="password"
-                    // value={formData.password}
-                    // onChange={handleChange}
+                    value={formData.password}
+                    onChange={handleChange}
                     type="password"
                     fullWidth
                     required
